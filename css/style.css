@@ -1,0 +1,29 @@
+body{/*start styles*/}
+
+/*
+=>MediaQuerys
+*/
+/* Extra small devices */
+@media (max-width: 575px) {
+
+}
+
+/* Small devices */
+@media (min-width: 576px) {
+  
+}
+
+/* Medium devices */
+@media (min-width: 768px) {
+  
+}
+
+/* Large devices */
+@media (min-width: 992px) {
+   
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+
+}

@@ -4,8 +4,7 @@
 => Copyright 2017 José Gregorio (zkreations contributors)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
-
-!function(){
+(function(){
 
 	'use strict';
 
@@ -234,4 +233,4 @@
 
 	window.whale = whale;
 
-}();
+})();

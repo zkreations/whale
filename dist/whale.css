@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.0
+=> whale.css v1.0.2
 => Daniel Abel  | fb.com/danieI.abel
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
@@ -120,7 +120,6 @@ input,
 label,
 select,
 textarea, a {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 
@@ -326,161 +325,119 @@ template {
 
 /*flex*/
 .flex {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
 }
 .wrap {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .wrap-reverse {
-  -webkit-flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
 } 
 .column {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
   flex-direction: column;
 }
 .column-reverse {
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
   flex-direction: column-reverse;
 }
 .row-reverse {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
   flex-direction: row-reverse;
 }
 .order-first {
-  -webkit-order: -1;
-  -ms-flex-order: -1;
+  -webkit-box-ordinal-group: 0;
   order: -1;
 }
 .order-last {
-  -webkit-order: 1;
-  -ms-flex-order: 1;
+  -webkit-box-ordinal-group: 2;
   order: 1;
 }
 
 .justify-content-center {
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 .justify-content-end {
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
 }
 .justify-content-start {
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
 }
 .justify-content-around {
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
+  justify-content: space-around;
 }
 .justify-content-between {
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
 }
 
 .align-content-center {
-    -webkit-align-content: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
+  align-content: center;
 }
 .align-content-end {
-    -webkit-align-content: flex-end;
-    -ms-flex-line-pack: end;
-    align-content: flex-end;
+  align-content: flex-end;
 }
 .align-content-start {
-    -webkit-align-content: flex-start;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
+  align-content: flex-start;
 }
 .align-content-around {
-    -webkit-align-content: space-around;
-    -ms-flex-line-pack: distribute;
-    align-content: space-around;
+  align-content: space-around;
 }
 .align-content-between {
-    -webkit-align-content: space-between;
-    -ms-flex-line-pack: justify;
-    align-content: space-between;
+  align-content: space-between;
 }
 .align-content-stretch {
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
+  align-content: stretch;
 }
 
 .align-items-baseline {
-    -webkit-align-items: baseline;
-    -ms-flex-align: baseline;
-    align-items: baseline;
+  -webkit-box-align: baseline;
+  align-items: baseline;
 }
 .align-items-center {
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
 }
 .align-items-end {
-    -webkit-align-items: flex-end;
-    -ms-flex-align: end;
-    align-items: flex-end;
+  -webkit-box-align: end;
+  align-items: flex-end;
 }
 .align-items-start {
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
+  -webkit-box-align: start;
+  align-items: flex-start;
 }
 .align-items-stretch {
-    -webkit-align-items: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
+  -webkit-box-align: stretch;
+  align-items: stretch;
 }
 
 .align-self-auto {
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    -ms-grid-row-align: auto;
-    align-self: auto;
+  -ms-grid-row-align: auto;
+  align-self: auto;
 }
 .align-self-baseline {
-    -webkit-align-self: baseline;
-    -ms-flex-item-align: baseline;
-    align-self: baseline;
+  align-self: baseline;
 }
 .align-self-center {
-    -webkit-align-self: center;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
+  -ms-grid-row-align: center;
+  align-self: center;
 }
 .align-self-end {
-    -webkit-align-self: flex-end;
-    -ms-flex-item-align: end;
-    align-self: flex-end;
+  align-self: flex-end;
 }
 .align-self-start {
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
+  align-self: flex-start;
 }
 .align-self-stretch {
-    -webkit-align-self: stretch;
-    -ms-flex-item-align: stretch;
-    -ms-grid-row-align: stretch;
-    align-self: stretch;
+  -ms-grid-row-align: stretch;
+  align-self: stretch;
 }
 
 /*buttom*/
@@ -566,6 +523,76 @@ iframe, embed, object {
 .container {
   margin: 0 auto;
   padding: 0 1rem; 
+}
+
+/*
+=> Responsive menu
+*/
+
+.navmenu ul,
+.navmenu li {
+  padding: 0;
+  margin: 0;
+}
+.navmenu--menu li {
+  position: relative;
+}
+.navmenu--menu a {
+  display: block;
+  font-size: 1rem;
+}
+.navmenu--menu ul {
+  visibility: hidden;
+  max-height:0;
+}
+
+/* Flechas */
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-width: 0px 5px 5px 0;
+    border-style: solid;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: .5rem;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Responsive del menu */
+
+@media (min-width: 768px){
+  .navmenu--menu > li {
+    display: inline-block;
+  }
+
+  .navmenu--menu ul {
+    text-align: left;
+    min-width: 200px;       
+  }
+
+  .navmenu--menu ul ul {
+    top: 0;
+    left: 100%;
+  }
+  .navmenu--menu ul {position: absolute;}
+  /* Efecto hover */
+  .navmenu--menu li:hover > ul {visibility: visible;max-height:1000px;}
+  /* Flecha responsive */
+
+  .navmenu--menu ul .arrow {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+
+@media (max-width: 778px){
+  .navmenu--menu ul {
+      overflow: hidden;
+  }    
+  .navmenu--menu ul.visible {
+    visibility: visible;max-height:1000px;
+  }
 }
 
 /* Print devices */

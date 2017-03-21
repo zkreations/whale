@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.2
+=> whale.css v1.0.3
 => Daniel Abel  | fb.com/danieI.abel
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
@@ -524,18 +524,24 @@ iframe, embed, object {
 
 /* Flechas */
 .arrow {
-    width: 10px;
-    height: 10px;
-    border-width: 0px 5px 5px 0;
-    border-style: solid;
-    vertical-align: middle;
-    display: inline-block;
-    margin-left: .5rem;
-    transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-width: 0px 5px 5px 0;
+  border-style: solid;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: .5rem;
+  transform: rotate(45deg);
 }
-
-/* Responsive del menu */
-
+@media (max-width: 767px){
+  .navmenu--menu ul {
+    overflow: hidden;
+  }  
+  .navmenu--menu ul.visible {
+  visibility: visible;
+    max-height:1000px;
+  }
+}
 @media (min-width: 768px){
   .navmenu--menu > li {
     display: inline-block;
@@ -543,7 +549,7 @@ iframe, embed, object {
 
   .navmenu--menu ul {
     text-align: left;
-    min-width: 200px;       
+    min-width: 200px;     
   }
 
   .navmenu--menu ul ul {
@@ -557,15 +563,6 @@ iframe, embed, object {
 
   .navmenu--menu ul .arrow {
     transform: rotate(-45deg);
-  }
-}
-
-@media (max-width: 778px){
-  .navmenu--menu ul {
-      overflow: hidden;
-  }    
-  .navmenu--menu ul.visible {
-    visibility: visible;max-height:1000px;
   }
 }
 

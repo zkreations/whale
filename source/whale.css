@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.3
+=> whale.css v1.0.5
 => Daniel Abel  | fb.com/danieI.abel
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
@@ -514,7 +514,9 @@ iframe, embed, object {
   position: relative;
 }
 .navmenu--menu a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 1rem;
 }
 .navmenu--menu ul {

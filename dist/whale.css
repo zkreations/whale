@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.3
+=> whale.css v1.0.5
 => Daniel Abel  | fb.com/danieI.abel
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
@@ -327,145 +327,175 @@ template {
 /*flex*/
 .flex {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 .wrap {
+  -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .wrap-reverse {
+  -webkit-flex-wrap: wrap-reverse;
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
 } 
 .column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 .column-reverse {
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
 }
 .row-reverse {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 .order-first {
   -webkit-box-ordinal-group: 0;
+  -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
 }
 .order-last {
   -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
 }
 
 .justify-content-center {
   -webkit-box-pack: center;
+  -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
 }
 .justify-content-end {
   -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .justify-content-start {
   -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .justify-content-around {
+  -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
 }
 .justify-content-between {
   -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .align-content-center {
+  -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
 }
 .align-content-end {
+  -webkit-align-content: flex-end;
   -ms-flex-line-pack: end;
   align-content: flex-end;
 }
 .align-content-start {
+  -webkit-align-content: flex-start;
   -ms-flex-line-pack: start;
   align-content: flex-start;
 }
 .align-content-around {
+  -webkit-align-content: space-around;
   -ms-flex-line-pack: distribute;
   align-content: space-around;
 }
 .align-content-between {
+  -webkit-align-content: space-between;
   -ms-flex-line-pack: justify;
   align-content: space-between;
 }
 .align-content-stretch {
+  -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
 }
 
 .align-items-baseline {
   -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
 }
 .align-items-center {
   -webkit-box-align: center;
+  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
 }
 .align-items-end {
   -webkit-box-align: end;
+  -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
 }
 .align-items-start {
   -webkit-box-align: start;
+  -webkit-align-items: flex-start;
   -ms-flex-align: start;
   align-items: flex-start;
 }
 .align-items-stretch {
   -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
 }
 
 .align-self-auto {
+  -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   -ms-grid-row-align: auto;
   align-self: auto;
 }
 .align-self-baseline {
+  -webkit-align-self: baseline;
   -ms-flex-item-align: baseline;
   align-self: baseline;
 }
 .align-self-center {
+  -webkit-align-self: center;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
 }
 .align-self-end {
+  -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 .align-self-start {
+  -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
 }
 .align-self-stretch {
+  -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   -ms-grid-row-align: stretch;
   align-self: stretch;
@@ -569,7 +599,18 @@ iframe, embed, object {
   position: relative;
 }
 .navmenu--menu a {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   font-size: 1rem;
 }
 .navmenu--menu ul {
@@ -587,6 +628,7 @@ iframe, embed, object {
   display: inline-block;
   margin-left: .5rem;
   -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 @media (max-width: 767px){
@@ -619,6 +661,7 @@ iframe, embed, object {
 
   .navmenu--menu ul .arrow {
     -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
 }

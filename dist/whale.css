@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.5
+=> whale.css v1.0.6
 => Daniel Abel  | fb.com/danieI.abel
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
@@ -315,7 +315,19 @@ template {
 /*
 => Utilities
 */
-.none {display:none!important;}
+.none {
+    display:none!important;
+}
+
+.no-style {
+    background: none transparent;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    outline: 0 none;
+    box-shadow: 0 0 transparent;
+	font: inherit;    
+}
 
 /*Clear float*/
 .clearfix::after {

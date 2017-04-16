@@ -1,5 +1,5 @@
 /*!
-=> whale.css v1.0.7
+=> whale.css v1.0.8
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 => normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css 
@@ -264,8 +264,8 @@ a:hover {
 }
 
 ol, ol li, ul, ul li {
-    margin: 0;
-    list-style: none;
+  margin: 0;
+  list-style: none;
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
@@ -306,17 +306,17 @@ img {
 => Utilities
 */
 .none {
-    display:none!important;
+  display:none!important;
 }
 
 .no-style {
-    background: none transparent;
-    padding: 0;
-    margin: 0;
-    border: 0 none;
-    outline: 0 none;
-    box-shadow: 0 0 transparent;
-	font: inherit;    
+  background: none transparent;
+  padding: 0;
+  margin: 0;
+  border: 0 none;
+  outline: 0 none;
+  box-shadow: 0 0 transparent;
+  font: inherit;  
 }
 
 /*Clear float*/
@@ -500,10 +500,7 @@ img {
   padding: .5em 1em;
   text-decoration: none !important;
   color: rgba(0, 0, 0, 0.5);
-}
-
-.button:visited {
-  color: inherit;
+  cursor: pointer;
 }
 
 /*font sizes*/
@@ -627,7 +624,7 @@ iframe, embed, object {
 
   .navmenu--menu ul {
     text-align: left;
-    min-width: 200px;     
+    min-width: 200px;   
   }
 
   .navmenu--menu ul ul {
@@ -642,7 +639,7 @@ iframe, embed, object {
     visibility: visible;
     max-height:1000px;
   }
-    
+  
   /* Responsive arrow */
   .navmenu--menu ul .arrow {
     -webkit-transform: rotate(-45deg);

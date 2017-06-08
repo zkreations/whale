@@ -1,9 +1,4 @@
-/*!
-=> whale.js v1.0.0
-=> José Gregorio | fb.com/JGMateran
-=> Copyright 2017 José Gregorio (zkreations contributors)
-=> Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
-*/
+/*! => whale.js alpha v0.0.8 | Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team) | Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE */
 (function(){
 
 	'use strict';

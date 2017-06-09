@@ -1,2 +1,115 @@
 # whale.css
-Microframework | flexbox and custom normalizer v5.0.0
+Microframework | flexbox and basic tools
+
+En muchos casos necesitamos crear un diseño basico, con menus multinivel responsive, dinamicos o elementos de este estilo y por falta de conocimientos recurrimos a frameworks mas grandes y complejas como JQuery. El hacer esto conlleva a la utilizacion de recursos que realmente no necesitamos. Whale es un conjunto de funciones generales, como la creacion de menus, toggleclass, tabs, reset css, flebox entre otros, todo en archivos muy pequeños.
+
+## Instalación
+
+Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de `<head>` y **whale.js** arriba de `</body>` para mayor rendimiento. Al incluir whale.css ya no es necesario incluir de normalizer.
+
+`html
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/zkreations/whale.css/master/dist/latest/whale.min.css"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.rawgit.com/zkreations/whale.css/master/dist/latest/whale.min.js"></script>
+`
+
+## Componentes
+
+<table>
+    <tr>
+        <td>whale-js--menu</td>
+        <td>Facilita la creacion de un menu multi-nivel responsive, detecta los submenus y agrega la class **is-parent** al padre.</td>
+    </tr>
+    <tr>
+        <td>whale-js--class</td>
+        <td>Crea la funcion conocida como **toggleclass** a un determinado elemento, para decidir el elemento que afectara se requiere especificar el atributo **data-for**.</td>
+    </tr>
+    <tr>
+        <td>whale-js--tab</td>
+        <td>Inicializa los **tabs**, requiere contenedores con una **id** unica y la class **whale__panel**, tambien botones con la class **whale__item** y el atributo **href** apuntando a la **id** del panel correspondiente.</td>
+    </tr>
+    <tr>
+        <td>whale-js--window</td>
+        <td>Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posiconada en el centro.</td>
+    </tr>
+    <tr>
+        <td>whale-js--group</td>
+        <td>Todos los botones dentro del contenedor que contengan la class **whale__button** agregaran o removeran una class a un unico contenedor con la id especificada.</td>
+    </tr>
+</table>
+
+## whale-js--menu
+
+Inicializa la funcion que permite crear un menu multinivel responsive, el menu detecta los padres de los submenus y agrega un indicador. Para que el menu funcione correctamente es necesario agregar la class **dropdown-menu** a la etiqueta **ul** principal, se puede omitir esto ultimo si solo se desea la funcion. Ejemplo:
+
+`html
+<ul class="whale-js--menu dropdown-menu">
+   <li><a href="#">Item 1</a></li>
+   <li><a href="#">Item 2</a>
+      <ul><!-- sub menu-->
+         <li><a href="#">Subitem 1</a></li>
+         <li><a href="#">Subitem 2</a>     
+      </ul>
+   </li>
+   <li><a href="#">Item 3</a></li>
+</ul>
+`
+
+## whale-js--class
+
+Inicializa la funcion **toggleclass**, esto quiere decir que la etiqueta html sera capaz de agregar o quitar la class **is-active** a otro elemento. Para poder enlazar a este ultimo, el elemento afectado necesita una **id**, que tambien debe ser especificada al elemento que realiza la accion mediante el atributo **data-for**. Ejemplo:
+
+`html
+<button class="whale-js--class" data-for="contenedor">Boton toggle</button>
+<div id="contenedor"></div><!-- elemento afectado -->
+`
+
+## whale-js--tab
+
+Inicializa los **tabs**, requiere contenedores con una **id** unica y la class **whale__panel**, tambien botones con la class **whale__item** y el atributo **href** apuntando a la **id** del panel correspondiente. Ejemplo:
+
+`html
+<div class="whale-js--tab">
+   <div><!-- botones -->
+      <a href="#panel1" class="whale__item">Item 1</a>
+      <a href="#panel2" class="whale__item">Item 2</a>
+   </div>
+   <div><!-- paneles -->
+      <div id="panel1" class="whale__panel">Panel 1</div>
+      <div id="panel2" class="whale__panel">Panel 2</div>
+   </div>
+</div>
+`
+
+## whale-js--window
+
+Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posiconada en el centro. Ejemplo:
+
+`html
+<div class="whale-js--window">
+   <a href="https://www.google.com" class="window__button">Ir a google</a>
+   <a href="https://www.zkreations.com" class="window__button">Ir a zkreations</a>
+</div>
+`
+
+## whale-js--group
+
+Todos los botones dentro del contenedor que contengan la class **whale__button** agregaran o removeran una class a un unico contenedor con la id especificada. Los botones tambien requieren del atributo data-class para especificar la class que se agregara y removera segun la situacion. Ejemplo:
+
+`html
+<div class="whale-js--group" data-focus="example">
+   <button class="whale__button" data-class="uno">Agregar clase uno</button>
+   <button class="whale__button" data-class="dos">Agregar clase dos</button>
+</div>
+
+<div id="example"></div>
+`
+
+## Licencia
+
+**Whale** is licensed under the MIT License.
+
+
+

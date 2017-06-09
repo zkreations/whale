@@ -1,195 +1,82 @@
-/*! => whale.js alpha v0.0.8 | Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team) | Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE */
-(function(){
+/*!
+=> whale.js beta v1.0.0
+=> Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
+=> Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
+*/
+;(function(){
 
 	'use strict';
 
-	var whale = function(){}; // Palabra reservada del codigo
+	var object = {},
+		toString = object.toString,
+		whale = function(){};
 
-	/*
-	 * @public
-	 * Metodo trim de ECMAScript 5
-	 */
-	var trim = function(text){
-		return text.trim();
-	};
+	var wclass = {
+		item:'whale__item',
+		panel:'whale__panel',
 
-	/*
-	 * @private
-	 * Funcion de ayuda
-	 * minificar codigo y eliminar redundancias del addClass, removeClass y hasClass
-	 */
-	var convert = function(element){
-		return (" " + (element.getAttribute("class") || "") + " ").replace(/[\t\r\n\f]/g," ");
-	};
+		active:'is-active',
+		parent:'is-parent',
 
-	/*
-	 * @private
-	 * Funcion de ayuda
-	 * Elimina la clase "active" de una collecion
-	 */
-	var clean = function(collection){
-		forEach(collection,function(index,item){
-			removeClass(item,'active');
-		});
-	};
+		button:'whale__button',
 
-	extend(whale,{
-		trim:trim,
-		extend:extend,
-		forEach:forEach,
-		isNull:isNull,
-		hasClass:hasClass,
-		addClass:addClass,
-		removeClass:removeClass,
-		toggleClass:toggleClass,
-
-		/*
-		 * @method
-		 * Metodo para el menu multinivel
-		 * whale.menu
-		 */
-		menu:function menu(element,optional){
-			if (isNull(element)){ return menu; }
-
-			forEach(element.querySelectorAll('a'),function(index,el){
-				var span,
-					ul = el.parentNode.querySelector('ul');
-
-				if (!isNull(ul)){
-					span = document.createElement('span');
-					addClass(span,'arrow');
-					el.appendChild(span);
-
-					el.addEventListener('click',function(event){
-						event.preventDefault();
-						toggleClass.parentChild(el,ul);
-					});
-				}
-			});
-		},
-
-		/*
-		 * @method
-		 * Metodo para los tabs
-		 * whale.tabs
-		 */
-		tabs:function tabs(el){
-			if (isNull(el)){ return tabs; }
-
-			var tabs = el.querySelectorAll('.tab'),
-				panels = el.querySelectorAll('.panel');
-
-			forEach(tabs,function(index,tab){
-				var id = tab.href.split("#")[1],
-					panel = el.querySelector("#" + id);
-
-				if (!isNull(panel)){
-					if (hasClass(panel,'active')){
-						addClass(tab,'active');
-					}
-
-					tab.addEventListener('click',function(event){
-						event.preventDefault();
-
-						clean(tabs);
-						clean(panels);
-
-						addClass(panel,'active');
-						addClass(tab,'active');
-					});
-				}
-			});
-		},
-
-		/*
-		 * @method
-		 * Hace lo que el metodo window.open pero con sintaxis moderna.
-		 * Ademas solo se centra la ventana.
-		 */
-		open:function(_url,options){
-			var string = (function(){
-				var string = '';
-				for (var name in options){
-					var value = options[name];
-					string += name + '=' + value + ',';
-				}
-				return string;
-			})();
-
-			string += 'left=' + ((screen.width - options.width) / 2) + ',top=' + ((screen.height - options.height) / 2);
-			window.open(_url,"",string);
-		},
-
-		/*
-		 * @method
-		 * Toma una coleccion y le agrega
-		 * la avertura de una ventana dependiendo
-		 * de su href.
-		 *
-		 * @note la coleccion debe ser de etiquetas "a"
-		 */
-		social:function(collection,optional){
-			forEach(collection,function(index,element){
-				element.addEventListener('click',function(event){
-					event.preventDefault();
-					whale.open(this.href,optional);
-				});
-			});
+		window:{
+			btn:'window__button',
+			def:{
+				width:600,
+				height:400,
+				centered:true
+			}
 		}
-	});
+	};
 
-	/*
-	 * @public
-	 * Devuelve "true" si es nulo.
-	 */
-	function isNull(item){
-		return null == item;
+	function forEach(item,callback){
+		for (var i = 0; i < item.length; i++){
+			if (false === callback.call(item[i],i,item[i])){ break; }
+		}
 	}
 
-	/*
-	 * @public
-	 * Metodo extend.
-	 */
-	function extend(self){
-		var i = 1,
-			extend,
-			length = arguments.length;
+	function extend(item){
+		for (var i = 1; i < arguments.length; i++){
+			var extend = arguments[i];
 
-		for (; i < length; i++){
-			extend = arguments[i];
 			for (var name in extend){
-				self[name] = extend[name];
+				item[name] = extend[name];
 			}
 		}
 
-		return self;
+		return item;
 	}
 
-	/*
-	 * @public
-	 * Metodo para recorrer array
-	 */
-	function forEach(self,callback){
-		var i = 0,
-			length = self.length;
-
-		for (; i < length; i++){
-			if (false === callback.call(self[i],i,self[i])){ break; }
+	function overloadSetter(callback){
+		return function(params,optional){
+			if (params){
+				if (optional){
+					callback.call(this,params,optional);
+				} else {
+					for (var name in params){
+						callback.call(this,name,params[name]);
+					}
+				}
+			}
+			return this;
 		}
-
-		return self;
 	}
 
-	/*
-	 * @methods
-	 * Metodos para las clases.
-	 */
+	function trim(text){
+		return text.trim();
+	}
+
+	function classHelper(element){
+		return (" " + (element.getAttribute("class") || "") + " ").replace(/[\t\r\n\f]/g," ");
+	}
+
 	function hasClass(element,className){
-		return convert(element).indexOf(className) > -1;
+		return -1 < classHelper(element).indexOf(className);
 	}
 
 	function addClass(element,className){
-		var string = convert(element);
+		var string = classHelper(element);
 
 		forEach(className.split(" "),function(index,name){
 			name = trim(name);
@@ -204,7 +91,7 @@
 	function removeClass(element,className){
 		forEach(className.split(" "),function(index,name){
 			element.setAttribute("class",trim(
-				(convert(element).replace(" " + trim(name) + " "," "))
+				(classHelper(element).replace(" " + trim(name) + " "," "))
 			));
 		});
 	}
@@ -214,17 +101,204 @@
 			(hasClass(element,name) ? removeClass : addClass)(element,name);
 		});
 	}
-	// Fin de los metodos de las clases
 
-	/*
-	 * @public
-	 * Agrega las clase "active" al padre y "visible" al hijo
-	 * whale.toggleClass.parentChild
-	 */
-	toggleClass.parentChild = function(parent,child){
-		toggleClass(parent,'active');
-		toggleClass(child,'visible');
+	forEach([
+		addClass,
+		removeClass,
+		toggleClass
+	],function(index,callback){
+
+		callback.collection = function(collection,className){
+			forEach(collection,function(i,element){
+				callback(element,className);
+			});
+		};
+
+	});
+
+	extend(whale,{
+		extend:extend,
+		forEach:forEach,
+		trim:trim,
+
+		hasClass:hasClass,
+		addClass:addClass,
+		removeClass:removeClass,
+		toggleClass:toggleClass,
+
+		overloadSetter:overloadSetter
+	});
+
+	forEach('String Function Number Array Object'.split(' '),function(index,name){
+		whale['is' + name] = function(item){
+			return '[object ' + name +']' === toString.call(item);
+		}
+	});
+
+	whale.component = overloadSetter(function(name,constr){
+		if (whale.isFunction(constr)){
+			whale.components[name] = constr;
+		}
+	});
+
+	whale.upgrate = function(name){
+		var component = whale.components[name];
+
+		if (component){
+			var elements = document.querySelectorAll('.' + name);
+
+			if (elements.length){
+				forEach(elements,function(index,element){
+					new component(element);
+				});
+			}
+		}
 	};
+
+	whale.open = function(href,options){
+		var str = '';
+
+		for (var name in options){
+			if (name !== 'centered'){
+				str += name + '=' + options[name] + ',';
+			}
+		}
+
+		str += (
+			options.centered ?
+				'left=' + ((screen.width - options.width) / 2) +
+				',top=' + ((screen.height - options.height) / 2) :
+
+				'left=0,right=0'
+		);
+
+		window.open(href,'',str)
+	};
+
+	whale.components = {
+		'whale-js--menu':function(menu){
+			forEach(menu.querySelectorAll('a'),function(index,a){
+				var ul = a.parentNode.querySelector('ul');
+
+				if (ul){
+					addClass(a,wclass.parent);
+
+					a.addEventListener('click',function(event){
+						event.preventDefault();
+						toggleClass.collection([a,ul],wclass.active);
+					});
+				}
+			});
+		},
+
+		'whale-js--class':function(button){
+			var attr__focus = button.getAttribute('data-focus'),
+				attr__event = button.getAttribute('data-event'),
+				whale__event = whale[attr__event + 'Class'],
+				attr__class = wclass.active || button.getAttribute('data-class'),
+				element = document.querySelector('#' + attr__focus);
+
+			if (element){
+				var callback = whale__event ? function(event){
+					event.preventDefault();
+					whale__event(element,attr__class);
+				} : function(event){
+					if (hasClass(element,attr__class)){
+						removeClass(element,attr__class);
+					} else {
+						addClass(element,attr__class);
+
+						var callback = function(ev){
+							if (ev !== event){
+								removeClass(element,attr__class);
+								document.removeEventListener('click',callback);
+							}
+						}
+
+						document.addEventListener('click',callback);
+					}
+				};
+
+				button.addEventListener('click',callback);
+			}
+		},
+
+		'whale-js--tab':function(container){
+			var actived = wclass.active,
+				items = container.querySelectorAll('.' + wclass.item),
+				panels = container.querySelectorAll('.' + wclass.panel);
+
+			if (items.length){
+				forEach(items,function(index,item){
+					var href = item.href.split('#')[1],
+						panel = container.querySelector('#' + href);
+
+					if (panel){
+						if (hasClass(panel,actived)){
+							addClass(item,actived);
+						}
+
+						item.addEventListener('click',function(event){
+							event.preventDefault();
+
+							forEach([items,panels],function(index,collection){
+								removeClass.collection(collection,actived);
+							});
+
+							addClass.collection([item,panel],actived);
+						});
+					}
+				});
+			}
+		},
+
+		'whale-js--window':function(container){
+			forEach(container.querySelectorAll('.' + wclass.window.btn),function(index,button){
+				var href = button.href;
+
+				if (href){
+					button.addEventListener('click',function(event){
+						event.preventDefault();
+						whale.open(href,wclass.window.def);
+					});
+				}
+			});
+		},
+
+		'whale-js--group':function(container){
+			var focus = container.getAttribute('data-focus'),
+				element = document.querySelector('#' + focus),
+				collection = container.querySelectorAll('.' + wclass.button),
+				beforeClass = null;
+
+			if (element){
+				forEach(collection,function(index,button){
+					var className = button.getAttribute('data-class');
+
+					if (className){
+						button.addEventListener('click',function(event){
+							event.preventDefault();
+
+							if (beforeClass){
+								removeClass(element,beforeClass);
+							}
+
+							removeClass.collection(collection,wclass.active);
+							addClass(button,wclass.active);
+
+							addClass(element,(beforeClass = className));
+						});
+					}
+				});
+			}
+		}
+	};
+
+	window.addEventListener('load',function(){
+		for (var name in whale.components){
+			whale.upgrate(name);
+		}
+	});
 
 	window.whale = whale;
 

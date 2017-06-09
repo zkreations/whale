@@ -24,19 +24,19 @@ Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de
     </tr>
     <tr>
         <td>whale-js--class</td>
-        <td>Crea la funcion conocida como **toggleclass**.</td>
+        <td>Crea la funcion conocida como toggleclass.</td>
     </tr>
     <tr>
         <td>whale-js--tab</td>
-        <td>Inicializa los **tabs**.</td>
+        <td>Inicializa los tabs.</td>
     </tr>
     <tr>
         <td>whale-js--window</td>
-        <td>Todos los enlaces del contenedor se abriran en una nueva ventana.</td>
+        <td>Los enlaces del contenedor se abriran en una nueva ventana.</td>
     </tr>
     <tr>
         <td>whale-js--group</td>
-        <td>Todos los botones del contenedor agregaran o removeran una class a un unico contenedor.</td>
+        <td>Los botones del contenedor agregaran o removeran una class a un unico contenedor.</td>
     </tr>
 </table>
 

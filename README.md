@@ -20,23 +20,23 @@ Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de
 <table>
     <tr>
         <td>whale-js--menu</td>
-        <td>Facilita la creacion de un menu multi-nivel responsive, detecta los submenus y agrega la class **is-parent** al padre.</td>
+        <td>Crea un menu multi-nivel responsive.</td>
     </tr>
     <tr>
         <td>whale-js--class</td>
-        <td>Crea la funcion conocida como **toggleclass** a un determinado elemento, para decidir el elemento que afectara se requiere especificar el atributo **data-for**.</td>
+        <td>Crea la funcion conocida como **toggleclass**.</td>
     </tr>
     <tr>
         <td>whale-js--tab</td>
-        <td>Inicializa los **tabs**, requiere contenedores con una **id** unica y la class **whale__panel**, tambien botones con la class **whale__item** y el atributo **href** apuntando a la **id** del panel correspondiente.</td>
+        <td>Inicializa los **tabs**.</td>
     </tr>
     <tr>
         <td>whale-js--window</td>
-        <td>Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posiconada en el centro.</td>
+        <td>Todos los enlaces del contenedor se abriran en una nueva ventana.</td>
     </tr>
     <tr>
         <td>whale-js--group</td>
-        <td>Todos los botones dentro del contenedor que contengan la class **whale__button** agregaran o removeran una class a un unico contenedor con la id especificada.</td>
+        <td>Todos los botones del contenedor agregaran o removeran una class a un unico contenedor.</td>
     </tr>
 </table>
 

@@ -59,10 +59,10 @@ Inicializa la funcion que permite crear un menu multinivel responsive, el menu d
 
 ## whale-js--class
 
-Inicializa la funcion **toggleclass**, esto quiere decir que la etiqueta html sera capaz de agregar o quitar la class **is-active** a otro elemento. Para poder enlazar a este ultimo, el elemento afectado necesita una **id**, que tambien debe ser especificada al elemento que realiza la accion mediante el atributo **data-for**. Ejemplo:
+Inicializa la funcion **toggleclass**, esto quiere decir que la etiqueta html sera capaz de agregar o quitar la class **is-active** a otro elemento. Para poder enlazar a este ultimo, el elemento afectado necesita una **id**, que tambien debe ser especificada al elemento que realiza la accion mediante el atributo **data-focus**. Ejemplo:
 
 ```html
-<button class="whale-js--class" data-for="contenedor">Boton toggle</button>
+<button class="whale-js--class" data-focus="contenedor">Boton toggle</button>
 <div id="contenedor"></div><!-- elemento afectado -->
 ```
 

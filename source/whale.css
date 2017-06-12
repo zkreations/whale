@@ -1,5 +1,5 @@
 /*!
-=> whale.css beta v1.0.0
+=> whale.css beta v1.0.1
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -558,10 +558,7 @@ iframe, embed, object {
   visibility: hidden;
   max-height: 0;
 }
-.dropdown-menu ul.is-active {
-  visibility: visible;
-  max-height: 1280px;    
-}
+
 .dropdown-menu .is-parent::after {
   content: "";
   width: 10px;
@@ -573,7 +570,12 @@ iframe, embed, object {
   margin-left: .5rem;
   transform: rotate(45deg);
 }
-
+@media (max-width: 767px){
+  .dropdown-menu ul.is-active {
+    visibility: visible;
+    max-height: 1280px;    
+  }
+}
 @media (min-width: 768px){
   .dropdown-menu > li {
     display: inline-block;
@@ -590,6 +592,7 @@ iframe, embed, object {
   }
   .dropdown-menu li:hover > ul {
     visibility: visible;
+    max-height: 1280px;  
   }
   .dropdown-menu ul .is-parent::after  {
     transform: rotate(-45deg);

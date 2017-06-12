@@ -1,5 +1,5 @@
 /*!
-=> whale.js beta v1.0.0
+=> whale.js beta v1.0.1
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */

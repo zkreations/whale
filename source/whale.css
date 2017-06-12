@@ -570,13 +570,15 @@ iframe, embed, object {
   margin-left: .5rem;
   transform: rotate(45deg);
 }
-@media (max-width: 767px){
+
+@media (max-width: 991px){
   .dropdown-menu ul.is-active {
     visibility: visible;
     max-height: 1280px;    
   }
 }
-@media (min-width: 768px){
+
+@media (min-width: 992px) {
   .dropdown-menu > li {
     display: inline-block;
   }

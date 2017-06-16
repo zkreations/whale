@@ -5,7 +5,7 @@ En muchos casos necesitamos crear un diseño basico, con menus multinivel respon
 
 ## Instalación
 
-Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de `<head>` y **whale.js** arriba de `</body>` para mayor rendimiento. Al incluir whale.css ya no es necesario incluir de normalizer.
+Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de `<head>` y **whale.js** arriba de `</body>` para mayor rendimiento. Al incluir whale.css ya no es necesario incluir normalizer.
 
 ```html
 <!-- Latest compiled and minified CSS -->
@@ -85,7 +85,7 @@ Inicializa los **tabs**, requiere contenedores con una **id** unica y la class *
 
 ## whale-js--window
 
-Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posiconada en el centro. Ejemplo:
+Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posicionada en el centro. Ejemplo:
 
 ```html
 <div class="whale-js--window">

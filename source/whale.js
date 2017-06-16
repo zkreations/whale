@@ -1,5 +1,5 @@
 /*!
-=> whale.js beta v1.0.1
+=> whale.js beta v1.0.2
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -11,7 +11,7 @@
 		toString = object.toString,
 		whale = function(){};
 
-	var wclass = {
+	var defaults = {
 		item:'whale__item',
 		panel:'whale__panel',
 
@@ -181,11 +181,11 @@
 				var ul = a.parentNode.querySelector('ul');
 
 				if (ul){
-					addClass(a,wclass.parent);
+					addClass(a,defaults.parent);
 
 					a.addEventListener('click',function(event){
 						event.preventDefault();
-						toggleClass.collection([a,ul],wclass.active);
+						toggleClass.collection([a,ul],defaults.active);
 					});
 				}
 			});
@@ -193,40 +193,56 @@
 
 		'whale-js--class':function(button){
 			var attr__focus = button.getAttribute('data-focus'),
+				attr__class = button.getAttribute('data-class') || defaults.active,
 				attr__event = button.getAttribute('data-event'),
 				whale__event = whale[attr__event + 'Class'],
-				attr__class = wclass.active || button.getAttribute('data-class'),
 				element = document.querySelector('#' + attr__focus);
 
 			if (element){
-				var callback = whale__event ? function(event){
-					event.preventDefault();
-					whale__event(element,attr__class);
-				} : function(event){
+				if (hasClass(element,attr__class)){
+					addClass(button,defaults.active)
+				} else {
+					removeClass(button,defaults.active);
+				}
+
+				var callback = whale__event ?
+
+				function(){
+					whale__event.collection([element,button],attr__class);
+				} :
+
+				function(event){
 					if (hasClass(element,attr__class)){
 						removeClass(element,attr__class);
+						removeClass(button,defaults.active);
 					} else {
 						addClass(element,attr__class);
+						addClass(button,defaults.active);
 
 						var callback = function(ev){
 							if (ev !== event){
 								removeClass(element,attr__class);
+								removeClass(button,defaults.active);
+
 								document.removeEventListener('click',callback);
 							}
-						}
+						};
 
 						document.addEventListener('click',callback);
 					}
-				};
+				}
 
-				button.addEventListener('click',callback);
+				button.addEventListener('click',function(event){
+					event.preventDefault();
+					callback(event);
+				});
 			}
 		},
 
 		'whale-js--tab':function(container){
-			var actived = wclass.active,
-				items = container.querySelectorAll('.' + wclass.item),
-				panels = container.querySelectorAll('.' + wclass.panel);
+			var actived = defaults.active,
+				items = container.querySelectorAll('.' + defaults.item),
+				panels = container.querySelectorAll('.' + defaults.panel);
 
 			if (items.length){
 				forEach(items,function(index,item){
@@ -253,13 +269,13 @@
 		},
 
 		'whale-js--window':function(container){
-			forEach(container.querySelectorAll('.' + wclass.window.btn),function(index,button){
+			forEach(container.querySelectorAll('.' + defaults.window.btn),function(index,button){
 				var href = button.href;
 
 				if (href){
 					button.addEventListener('click',function(event){
 						event.preventDefault();
-						whale.open(href,wclass.window.def);
+						whale.open(href,defaults.window.def);
 					});
 				}
 			});
@@ -268,7 +284,7 @@
 		'whale-js--group':function(container){
 			var focus = container.getAttribute('data-focus'),
 				element = document.querySelector('#' + focus),
-				collection = container.querySelectorAll('.' + wclass.button),
+				collection = container.querySelectorAll('.' + defaults.button),
 				beforeClass = null;
 
 			if (element){
@@ -283,8 +299,8 @@
 								removeClass(element,beforeClass);
 							}
 
-							removeClass.collection(collection,wclass.active);
-							addClass(button,wclass.active);
+							removeClass.collection(collection,defaults.active);
+							addClass(button,defaults.active);
 
 							addClass(element,(beforeClass = className));
 						});

@@ -1,5 +1,5 @@
 /*!
-=> whale.js beta v1.0.2
+=> whale.js beta v1.0.8
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -176,7 +176,7 @@
 	};
 
 	whale.components = {
-		'whale-js--menu':function(menu){
+		'whale--menu':function(menu){
 			forEach(menu.querySelectorAll('a'),function(index,a){
 				var ul = a.parentNode.querySelector('ul');
 
@@ -191,7 +191,7 @@
 			});
 		},
 
-		'whale-js--class':function(button){
+		'whale--class':function(button){
 			var attr__focus = button.getAttribute('data-focus'),
 				attr__class = button.getAttribute('data-class') || defaults.active,
 				attr__event = button.getAttribute('data-event'),
@@ -239,7 +239,7 @@
 			}
 		},
 
-		'whale-js--tab':function(container){
+		'whale--tab':function(container){
 			var actived = defaults.active,
 				items = container.querySelectorAll('.' + defaults.item),
 				panels = container.querySelectorAll('.' + defaults.panel);
@@ -268,7 +268,7 @@
 			}
 		},
 
-		'whale-js--window':function(container){
+		'whale--window':function(container){
 			forEach(container.querySelectorAll('.' + defaults.window.btn),function(index,button){
 				var href = button.href;
 
@@ -281,7 +281,7 @@
 			});
 		},
 
-		'whale-js--group':function(container){
+		'whale--group':function(container){
 			var focus = container.getAttribute('data-focus'),
 				element = document.querySelector('#' + focus),
 				collection = container.querySelectorAll('.' + defaults.button),

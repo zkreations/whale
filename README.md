@@ -19,33 +19,33 @@ Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de
 
 <table>
     <tr>
-        <td>whale-js--menu</td>
+        <td>whale--menu</td>
         <td>Crea un menu multi-nivel responsive.</td>
     </tr>
     <tr>
-        <td>whale-js--class</td>
+        <td>whale--class</td>
         <td>Crea la funcion conocida como toggleclass.</td>
     </tr>
     <tr>
-        <td>whale-js--tab</td>
+        <td>whale--tab</td>
         <td>Inicializa los tabs.</td>
     </tr>
     <tr>
-        <td>whale-js--window</td>
+        <td>whale--window</td>
         <td>Los enlaces del contenedor se abriran en una nueva ventana.</td>
     </tr>
     <tr>
-        <td>whale-js--group</td>
+        <td>whale--group</td>
         <td>Los botones del contenedor agregaran o removeran una class a un unico contenedor.</td>
     </tr>
 </table>
 
-## whale-js--menu
+## whale--menu
 
 Inicializa la funcion que permite crear un menu multinivel responsive, el menu detecta los padres de los submenus y agrega un indicador. Para que el menu funcione correctamente es necesario agregar la class **dropdown-menu** a la etiqueta **ul** principal, se puede omitir esto ultimo si solo se desea la funcion. Ejemplo:
 
 ```html
-<ul class="whale-js--menu dropdown-menu">
+<ul class="whale--menu dropdown-menu">
    <li><a href="#">Item 1</a></li>
    <li><a href="#">Item 2</a>
       <ul><!-- sub menu-->
@@ -57,21 +57,21 @@ Inicializa la funcion que permite crear un menu multinivel responsive, el menu d
 </ul>
 ```
 
-## whale-js--class
+## whale--class
 
 Inicializa la funcion **toggleclass**, esto quiere decir que la etiqueta html sera capaz de agregar o quitar la class **is-active** a otro elemento. Para poder enlazar a este ultimo, el elemento afectado necesita una **id**, que tambien debe ser especificada al elemento que realiza la accion mediante el atributo **data-focus**. Ejemplo:
 
 ```html
-<button class="whale-js--class" data-focus="contenedor">Boton toggle</button>
+<button class="whale--class" data-focus="contenedor">Boton toggle</button>
 <div id="contenedor"></div><!-- elemento afectado -->
 ```
 
-## whale-js--tab
+## whale--tab
 
 Inicializa los **tabs**, requiere contenedores con una **id** unica y la class **whale__panel**, tambien botones con la class **whale__item** y el atributo **href** apuntando a la **id** del panel correspondiente. Ejemplo:
 
 ```html
-<div class="whale-js--tab">
+<div class="whale--tab">
    <div><!-- botones -->
       <a href="#panel1" class="whale__item">Item 1</a>
       <a href="#panel2" class="whale__item">Item 2</a>
@@ -83,23 +83,23 @@ Inicializa los **tabs**, requiere contenedores con una **id** unica y la class *
 </div>
 ```
 
-## whale-js--window
+## whale--window
 
 Todos los enlaces dentro del contenedor que contengan la class **window__button** se abriran en una nueva ventana posicionada en el centro. Ejemplo:
 
 ```html
-<div class="whale-js--window">
+<div class="whale--window">
    <a href="https://www.google.com" class="window__button">Ir a google</a>
    <a href="https://www.zkreations.com" class="window__button">Ir a zkreations</a>
 </div>
 ```
 
-## whale-js--group
+## whale--group
 
 Todos los botones dentro del contenedor que contengan la class **whale__button** agregaran o removeran una class a un unico contenedor con la id especificada. Los botones tambien requieren del atributo data-class para especificar la class que se agregara y removera segun la situacion. Ejemplo:
 
 ```html
-<div class="whale-js--group" data-focus="example">
+<div class="whale--group" data-focus="example">
    <button class="whale__button" data-class="uno">Agregar clase uno</button>
    <button class="whale__button" data-class="dos">Agregar clase dos</button>
 </div>

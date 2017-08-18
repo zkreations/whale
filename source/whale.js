@@ -1,5 +1,5 @@
 /*!
-=> whale.js beta v1.0.8
+=> whale.js beta v1.0.10
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -12,16 +12,16 @@
 		whale = function(){};
 
 	var defaults = {
-		item:'whale__item',
-		panel:'whale__panel',
+		item:'this-item',
+		panel:'this-panel',
 
 		active:'is-active',
 		parent:'is-parent',
 
-		button:'whale__button',
+		button:'this-button',
 
 		window:{
-			btn:'window__button',
+			btn:'this-window',
 			def:{
 				width:600,
 				height:400,
@@ -176,7 +176,7 @@
 	};
 
 	whale.components = {
-		'whale--menu':function(menu){
+		'wjs-menu':function(menu){
 			forEach(menu.querySelectorAll('a'),function(index,a){
 				var ul = a.parentNode.querySelector('ul');
 
@@ -191,7 +191,7 @@
 			});
 		},
 
-		'whale--class':function(button){
+		'wjs-class':function(button){
 			var attr__focus = button.getAttribute('data-focus'),
 				attr__class = button.getAttribute('data-class') || defaults.active,
 				attr__event = button.getAttribute('data-event'),
@@ -239,7 +239,7 @@
 			}
 		},
 
-		'whale--tab':function(container){
+		'wjs-tab':function(container){
 			var actived = defaults.active,
 				items = container.querySelectorAll('.' + defaults.item),
 				panels = container.querySelectorAll('.' + defaults.panel);
@@ -268,7 +268,7 @@
 			}
 		},
 
-		'whale--window':function(container){
+		'wjs-window':function(container){
 			forEach(container.querySelectorAll('.' + defaults.window.btn),function(index,button){
 				var href = button.href;
 
@@ -281,7 +281,7 @@
 			});
 		},
 
-		'whale--group':function(container){
+		'wjs-group':function(container){
 			var focus = container.getAttribute('data-focus'),
 				element = document.querySelector('#' + focus),
 				collection = container.querySelectorAll('.' + defaults.button),

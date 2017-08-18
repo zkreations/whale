@@ -1,5 +1,5 @@
 /*!
-=> whale.css beta v1.0.8
+=> whale.css beta v1.0.10
 => Copyright 2017 zkreations
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -259,14 +259,14 @@ a {
   color: #2196f3;
   text-decoration: none;
 }
-
-a:focus, a:hover {
+a:focus,
+a:hover {
   color: #1565c0;
-  text-decoration: underline;
 }
-
+a:focus,
 a:active,
 a:hover {
+  text-decoration: none;
   outline-width: 0;
 }
 ul, ol {
@@ -316,25 +316,23 @@ p {
 => Utilities
 */
 .none {
-  display:none!important;
+  display:none !important;
 }
-
-.no-style {
+.reset {
   background: none transparent;
   padding: 0;
   margin: 0;
   border: 0 none;
   outline: 0 none;
   box-shadow: 0 0 transparent;
-  font: initial;  
+  font: inherit;
+  vertical-align: baseline;
 }
-
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
 .center-text {
   text-align: center;
 }
@@ -452,15 +450,12 @@ p {
 => Buttom
 */
 .button {
-  display: inline-block;    
-  white-space: nowrap;
+  display: inline-block;
   font-weight: 400;
   line-height: 1.25;
   user-select: none;
-  font-size: 100%;
   padding: .6em 1em;
   text-decoration: none !important;
-  color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   vertical-align: middle;
 }
@@ -514,7 +509,7 @@ iframe, embed, object {
 => Responsive menu
 */
 .dropdown-menu {
-  font-size: 0;
+  display: inline-block;
 }
 .dropdown-menu,
 .dropdown-menu ul,
@@ -535,35 +530,37 @@ iframe, embed, object {
   visibility: hidden;
   max-height: 0;
 }
-
 .dropdown-menu .is-parent::after {
   content: "";
-  width: 10px;
-  height: 10px;
-  border-width: 0px 3px 3px 0;
-  border-style: solid;
-  vertical-align: middle;
   display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-top: 4px dashed;
   margin-left: .5rem;
-  transform: rotate(45deg);
 }
-
 @media (max-width: 991px){
   .dropdown-menu ul.is-active {
     visibility: visible;
     max-height: 1280px;    
   }
+  .dropdown-menu ul {
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 992px) {
   .dropdown-menu > li {
-    display: inline-block;
+    float: left;
   }
   .dropdown-menu ul {
     text-align: left;
     top: 0;
     left: 100%;
     position: absolute;
+    min-width: 160px;
   }
   .dropdown-menu > li > ul {
     top: 100%;
@@ -573,19 +570,19 @@ iframe, embed, object {
     visibility: visible;
     max-height: 1280px;  
   }
-  .dropdown-menu ul .is-parent::after  {
-    transform: rotate(-45deg);
+  .dropdown-menu ul .is-parent::after {
+    border-left: 4px dashed;
+    border-right: 0 transparent;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
   }
 }
 
 /*
 => Responsive tabs
 */
-.whale__panel {
+.this-panel:not(.is-active) {
     display: none;
-}
-.whale__panel.is-active {
-    display: block;
 }
 /*
 =>MediaQuerys

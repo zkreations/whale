@@ -1,4 +1,4 @@
-# whale.css
+# whale
 
 > Microframework | flexbox and basic tools
 
@@ -6,11 +6,11 @@
 [![changelog][changelog-img]][changelog-url]
 
 ## Introduccion
-En muchos casos necesitamos crear un diseño basico, con menus multinivel responsive, dinamicos o elementos de este estilo y por falta de conocimientos recurrimos a frameworks mas grandes y complejas como JQuery. El hacer esto conlleva a la utilizacion de recursos que realmente no necesitamos. Whale es un conjunto de funciones generales, como la creacion de menus, toggleclass, tabs, reset css, flebox entre otros, todo en archivos muy pequeños.
+Whale es un conjunto de funciones generales, que incluye menus, botones, tabs, reset css, flebox entre otros, todo en archivos muy pequeños.
 
 ## Instalación
 
-Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de `<head>` y **whale.js** arriba de `</body>` para mayor rendimiento. Al incluir whale.css ya no es necesario incluir normalizer.
+Incluir **whale.css** y **whale.js**, recomiendo agregar **whale.css** debajo de `<head>` y **whale.js** arriba de `</body>` para mayor rendimiento. whale.css ya incluye la version mas reciente de normalizer.
 
 ```html
 <!-- Latest compiled and minified CSS -->
@@ -117,6 +117,6 @@ Todos los botones dentro del contenedor que contengan la class **this-button** a
 **Whale** is licensed under the MIT License.
 
 [changelog-img]: https://img.shields.io/badge/changelog-md-blue.svg?style=flat-square
-[changelog-url]: CHANGELOG.md
+[changelog-url]: changelog.md
 [license-img]: https://img.shields.io/npm/l/normalize.css.svg?style=flat-square
-[license-url]: LICENSE.md
+[license-url]: LICENSE

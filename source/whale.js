@@ -1,321 +1,335 @@
 /*!
-=> whale.js beta v1.0.10
+=> whale.js beta v1.1.12
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
-;(function(){
+var whale = (function(){
 
-	'use strict';
+				"use strict";
 
-	var object = {},
-		toString = object.toString,
-		whale = function(){};
+				function whale(name,constructor){
+					return whale.addElements(name,constructor);
+				}
 
-	var defaults = {
-		item:'this-item',
-		panel:'this-panel',
+				whale.extend = function(target){
+					var options, option, name, original,
+						i = 1,
+						length = arguments.length;
 
-		active:'is-active',
-		parent:'is-parent',
-
-		button:'this-button',
-
-		window:{
-			btn:'this-window',
-			def:{
-				width:600,
-				height:400,
-				centered:true
-			}
-		}
-	};
-
-	function forEach(item,callback){
-		for (var i = 0; i < item.length; i++){
-			if (false === callback.call(item[i],i,item[i])){ break; }
-		}
-	}
-
-	function extend(item){
-		for (var i = 1; i < arguments.length; i++){
-			var extend = arguments[i];
-
-			for (var name in extend){
-				item[name] = extend[name];
-			}
-		}
-
-		return item;
-	}
-
-	function overloadSetter(callback){
-		return function(params,optional){
-			if (params){
-				if (optional){
-					callback.call(this,params,optional);
-				} else {
-					for (var name in params){
-						callback.call(this,name,params[name]);
+					if (i === length){
+						target = this;
+						i--;
 					}
-				}
-			}
-			return this;
-		}
-	}
 
-	function trim(text){
-		return text.trim();
-	}
+					for (; i < length; i++){
+						if ( (options = arguments[i]) != null ){
+							for (name in options){
+								option = options[name];
+								original = target[name];
 
-	function classHelper(element){
-		return (" " + (element.getAttribute("class") || "") + " ").replace(/[\t\r\n\f]/g," ");
-	}
-
-	function hasClass(element,className){
-		return -1 < classHelper(element).indexOf(className);
-	}
-
-	function addClass(element,className){
-		var string = classHelper(element);
-
-		forEach(className.split(" "),function(index,name){
-			name = trim(name);
-			if (!hasClass(element,name)){
-				string += name + " ";
-			}
-		});
-
-		element.setAttribute("class",trim(string));
-	}
-
-	function removeClass(element,className){
-		forEach(className.split(" "),function(index,name){
-			element.setAttribute("class",trim(
-				(classHelper(element).replace(" " + trim(name) + " "," "))
-			));
-		});
-	}
-
-	function toggleClass(element,className){
-		forEach(className.split(" "),function(index,name){
-			(hasClass(element,name) ? removeClass : addClass)(element,name);
-		});
-	}
-
-	forEach([
-		addClass,
-		removeClass,
-		toggleClass
-	],function(index,callback){
-
-		callback.collection = function(collection,className){
-			forEach(collection,function(i,element){
-				callback(element,className);
-			});
-		};
-
-	});
-
-	extend(whale,{
-		extend:extend,
-		forEach:forEach,
-		trim:trim,
-
-		hasClass:hasClass,
-		addClass:addClass,
-		removeClass:removeClass,
-		toggleClass:toggleClass,
-
-		overloadSetter:overloadSetter
-	});
-
-	forEach('String Function Number Array Object'.split(' '),function(index,name){
-		whale['is' + name] = function(item){
-			return '[object ' + name +']' === toString.call(item);
-		}
-	});
-
-	whale.component = overloadSetter(function(name,constr){
-		if (whale.isFunction(constr)){
-			whale.components[name] = constr;
-		}
-	});
-
-	whale.upgrate = function(name){
-		var component = whale.components[name];
-
-		if (component){
-			var elements = document.querySelectorAll('.' + name);
-
-			if (elements.length){
-				forEach(elements,function(index,element){
-					new component(element);
-				});
-			}
-		}
-	};
-
-	whale.open = function(href,options){
-		var str = '';
-
-		for (var name in options){
-			if (name !== 'centered'){
-				str += name + '=' + options[name] + ',';
-			}
-		}
-
-		str += (
-			options.centered ?
-				'left=' + ((screen.width - options.width) / 2) +
-				',top=' + ((screen.height - options.height) / 2) :
-
-				'left=0,right=0'
-		);
-
-		window.open(href,'',str)
-	};
-
-	whale.components = {
-		'wjs-menu':function(menu){
-			forEach(menu.querySelectorAll('a'),function(index,a){
-				var ul = a.parentNode.querySelector('ul');
-
-				if (ul){
-					addClass(a,defaults.parent);
-
-					a.addEventListener('click',function(event){
-						event.preventDefault();
-						toggleClass.collection([a,ul],defaults.active);
-					});
-				}
-			});
-		},
-
-		'wjs-class':function(button){
-			var attr__focus = button.getAttribute('data-focus'),
-				attr__class = button.getAttribute('data-class') || defaults.active,
-				attr__event = button.getAttribute('data-event'),
-				whale__event = whale[attr__event + 'Class'],
-				element = document.querySelector('#' + attr__focus);
-
-			if (element){
-				if (hasClass(element,attr__class)){
-					addClass(button,defaults.active)
-				} else {
-					removeClass(button,defaults.active);
-				}
-
-				var callback = whale__event ?
-
-				function(){
-					whale__event.collection([element,button],attr__class);
-				} :
-
-				function(event){
-					if (hasClass(element,attr__class)){
-						removeClass(element,attr__class);
-						removeClass(button,defaults.active);
-					} else {
-						addClass(element,attr__class);
-						addClass(button,defaults.active);
-
-						var callback = function(ev){
-							if (ev !== event){
-								removeClass(element,attr__class);
-								removeClass(button,defaults.active);
-
-								document.removeEventListener('click',callback);
+								if (option !== original){
+									target[name] = option;
+								}
 							}
-						};
-
-						document.addEventListener('click',callback);
-					}
-				}
-
-				button.addEventListener('click',function(event){
-					event.preventDefault();
-					callback(event);
-				});
-			}
-		},
-
-		'wjs-tab':function(container){
-			var actived = defaults.active,
-				items = container.querySelectorAll('.' + defaults.item),
-				panels = container.querySelectorAll('.' + defaults.panel);
-
-			if (items.length){
-				forEach(items,function(index,item){
-					var href = item.href.split('#')[1],
-						panel = container.querySelector('#' + href);
-
-					if (panel){
-						if (hasClass(panel,actived)){
-							addClass(item,actived);
 						}
-
-						item.addEventListener('click',function(event){
-							event.preventDefault();
-
-							forEach([items,panels],function(index,collection){
-								removeClass.collection(collection,actived);
-							});
-
-							addClass.collection([item,panel],actived);
-						});
 					}
-				});
-			}
-		},
 
-		'wjs-window':function(container){
-			forEach(container.querySelectorAll('.' + defaults.window.btn),function(index,button){
-				var href = button.href;
+					return target;
+				};
 
-				if (href){
-					button.addEventListener('click',function(event){
-						event.preventDefault();
-						whale.open(href,defaults.window.def);
+				function forEach(item,callback){
+					var i = 0,
+						length = item.length;
+
+					for (; i < length; i++){
+						if (false === callback.call(item[i],i,item[i])){
+							break;
+						}
+					}
+
+					return item;
+				}
+
+				function trim(string){
+					return string.trim();
+				}
+
+				function convert(element){
+					return (" " + (element.getAttribute("class") || "") + " ").replace(/[\t\r\n\f]/g," ");
+				}
+
+				function hasClass(element,className){
+					return -1 < convert(element).indexOf(className);
+				}
+
+				function addClass(element,className){
+					var string = convert(element);
+
+					forEach(className.split(" "),function(index,name){
+						name = trim(name);
+						if (!hasClass(element,name)){
+							string += name + " ";
+						}
+					});
+
+					element.setAttribute("class",trim(string));
+				}
+
+				function removeClass(element,className){
+					forEach(className.split(" "),function(index,name){
+						element.setAttribute("class",trim(
+							(convert(element).replace(" " + trim(name) + " "," "))
+						));
 					});
 				}
-			});
-		},
 
-		'wjs-group':function(container){
-			var focus = container.getAttribute('data-focus'),
-				element = document.querySelector('#' + focus),
-				collection = container.querySelectorAll('.' + defaults.button),
-				beforeClass = null;
+				function toggleClass(element,className){
+					forEach(className.split(" "),function(index,name){
+						(hasClass(element,name) ? removeClass : addClass)(element,name);
+					});
+				}
 
-			if (element){
-				forEach(collection,function(index,button){
-					var className = button.getAttribute('data-class');
+				forEach([
+					addClass,
+					removeClass,
+					toggleClass
+				],function(index,callback){
 
-					if (className){
-						button.addEventListener('click',function(event){
-							event.preventDefault();
-
-							if (beforeClass){
-								removeClass(element,beforeClass);
-							}
-
-							removeClass.collection(collection,defaults.active);
-							addClass(button,defaults.active);
-
-							addClass(element,(beforeClass = className));
+					callback.collection = function(collection,className){
+						forEach(collection,function(i,element){
+							callback(element,className);
 						});
+					};
+
+				});
+
+				whale.components = {};
+
+				whale.addElements = function(object,constructor){
+					var name;
+
+					if (constructor){
+						whale.components[object] = constructor;
+					} else {
+						for (name in object){
+							whale.components[ name ] = object[name];
+						}
+					}
+
+					return this;
+				};
+
+				whale.extend({
+					"trim":trim,
+					"forEach":forEach,
+
+					"hasClass":hasClass,
+					"addClass":addClass,
+					"removeClass":removeClass,
+					"toggleClass":toggleClass
+				});
+
+				window.addEventListener("load",function(){
+					var name,
+						components = whale.components;
+
+					for (name in components){
+						var i = 0,
+							elements = document.querySelectorAll("." + name),
+							length = elements.length,
+							constr = components[name];
+
+						for (; i < length; i++){
+							new constr(elements[i],i,name);
+						}
 					}
 				});
-			}
-		}
-	};
 
-	window.addEventListener('load',function(){
-		for (var name in whale.components){
-			whale.upgrate(name);
-		}
-	});
+				return whale;
 
-	window.whale = whale;
+			})();
 
-})();
+			(function(){
+
+				"use strict"
+
+				function Menu(container){
+					var classes = this.classes;
+
+					whale.forEach(container.querySelectorAll("a"),function(index,a){
+						var li = a.parentNode,
+							uls = li.querySelectorAll("ul"),
+							ul = uls[0];
+
+						if (uls.length){
+							whale.addClass(li,classes.parent);
+
+							a.addEventListener("click",function(event){
+								event.preventDefault();
+
+								if (whale.hasClass(ul,classes.active)){
+									whale.removeClass.collection(uls,classes.active);
+								} else {
+									whale.addClass(ul,classes.active);
+								}
+							});
+						}
+					});
+				}
+
+				Menu.prototype = {
+					classes:{
+						active:"is-active",
+						parent:"is-parent"
+					}
+				};
+
+				function Tab(container){
+					var classes = this.classes,
+						items = container.querySelectorAll("." + classes.item),
+						panels = container.querySelectorAll("." + classes.panel);
+
+					if (items.length){
+						whale.forEach(items,function(index,item){
+							var href = item.href.split("#")[1],
+								panel = container.querySelector("#" + href);
+
+							if (panel){
+								if (whale.hasClass(panel,classes.active)){
+									whale.addClass(item,classes.active);
+								}
+
+								item.addEventListener("click",function(event){
+									event.preventDefault();
+
+									whale.forEach([items,panels],function(index,collection){
+										whale.removeClass.collection(collection,classes.active);
+									});
+
+									whale.addClass.collection([item,panel],classes.active);
+								});
+							}
+						});
+					}
+				}
+
+				Tab.prototype.classes = {
+					item:"wjs-item",
+					panel:"wjs-panel",
+					active:"is-active"
+				};
+
+				function Outsite(element){
+					var classes = this.classes,
+						dataTarget = element.getAttribute(this.data.target),
+						target = document.getElementById(dataTarget);
+
+					element.addEventListener("click",function(event){
+						event.preventDefault();
+
+						if (whale.hasClass(target,classes.active)){
+							whale.removeClass.collection([element,target],classes.active);
+						} else {
+							whale.addClass.collection([element,target],classes.active);
+
+							var callback = function(ev){
+								var tar = ev.target;
+								if (ev !== event && tar !== target && tar.parentNode !== target){
+									whale.removeClass.collection([element,target],classes.active);
+
+									document.removeEventListener("click",callback);
+								}
+							};
+
+							document.addEventListener("click",callback);
+						}
+					});
+				}
+
+				var defaults = Outsite.prototype = {
+					classes:{
+						active:"is-active"
+					},
+
+					data:{
+						target:"data-target"
+					}
+				};
+
+				var components = {};
+
+				whale.forEach(["addClass","removeClass","toggleClass"],function(index,name){
+
+					components[name] = function(element){
+						var event,
+							dataTarget = element.getAttribute(defaults.data.target),
+							target = document.querySelectorAll("." + dataTarget);
+
+						if (target){
+							element.addEventListener("click",function(){
+								event = whale[name];
+
+								event(element,defaults.classes.active);
+								event.collection(target,defaults.classes.active);
+							});
+						}
+					};
+
+				});
+
+				function Spoiler(container){
+					var classes = this.classes,
+						button = container.querySelector("." + classes.button),
+						content = container.querySelector("." + classes.content),
+						active = classes.active;
+
+					if (whale.hasClass(content,active)){
+						whale.addClass(button,active);
+					}
+
+					button.addEventListener("click",function(){
+						whale.toggleClass.collection([button,content],active);
+					});
+				}
+
+				Spoiler.prototype = {
+					classes:{
+						active:"is-active",
+						content:"wjs-container",
+						button:"wjs-button"
+					}
+				};
+
+				function Window(container){
+					var defaults = this.defaults,
+						width = defaults.width,
+						height = defaults.height;
+
+					var string = "left=" + ((screen.width - width) / 2) +
+								 ",top=" + ((screen.height - height) / 2) +
+								 ",width=" + width + ",height=" + height;
+
+
+					container.addEventListener("click",function(event){
+						event.preventDefault();
+						window.open(this.href,this.target,string);
+					});
+				}
+
+				Window.prototype = {
+					defaults:{
+						width:600,
+						height:400
+					}
+				};
+
+				whale.addElements(components)
+					 .addElements({
+					 	"wjs-menu":Menu,
+					 	"wjs-tab":Tab,
+					 	"wjs-spoiler":Spoiler,
+					 	"wjs-outsite":Outsite,
+					 	"wjs-window":Window
+					 });
+
+			})();

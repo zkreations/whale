@@ -1,5 +1,5 @@
 /*!
-=> whale.js beta v1.3.12
+=> whale.js v1.4.0
 => Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
 => Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
 */
@@ -236,7 +236,7 @@ var whale = (function(){
 
 				var callback = function(ev){
 					var tar = ev.target;
-					if (ev !== event && tar !== target && tar.parentNode !== target){
+					if (ev !== event && tar !== target && !target.contains(tar)){
 						whale.removeClass.collection([element,target],classes.active);
 
 						document.removeEventListener("click",callback);

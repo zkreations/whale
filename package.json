@@ -1,0 +1,47 @@
+{
+  "name": "whale",
+  "description": "microframework for developing responsive",
+  "version": "1.5.0",
+  "keywords": [
+    "css-framework",
+    "micro-framework",
+    "flexbox",
+    "css",
+    "javascript",
+    "html"
+  ],
+  "contributors": [
+    {
+      "name": "Daniel Abel",
+      "email": "daniel@zkreations.com",
+      "web": "https://www.zkreations.com"
+    }
+  ],
+  "bugs": {
+    "web": "https://github.com/zkreations/whale/issues"
+  },
+  "licenses": [
+    {
+      "name": "MIT",
+      "url": "https://github.com/zkreations/whale/blob/master/LICENSE"
+    }
+  ],
+  "browserslist": [
+    ">= 1%",
+    "last 2 versions",
+    "not dead",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ],
+  "devDependencies": [
+    "autoprefixer": "8.6.4",
+    "clean-css": "4.2.1",
+    "uglify-js": "3.3.9",
+  ]
+}

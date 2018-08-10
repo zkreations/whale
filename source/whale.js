@@ -1,8 +1,10 @@
 /*!
-=> whale.js v1.4.0
-=> Copyright 2017 José Gregorio | fb.com/JGMateran (zkreations team)
-=> Licensed under MIT | github.com/zkreations/whale.css/blob/master/LICENSE
-*/
+ * Whale v1.5.0
+ * Copyright 2017-2018 zkreations
+ * Developed by José Gregorio (fb.com/JGMateran)
+ * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
+ */
+
 var whale = (function(){
 
 	"use strict";
@@ -160,11 +162,13 @@ var whale = (function(){
 			var li = a.parentNode,
 				uls = li.querySelectorAll("ul"),
 				as = li.querySelectorAll("a"),
+                span = document.createElement('span'),
 				ul = uls[0];
 
 			if (uls.length){
 				whale.addClass(li,classes.parent);
-
+                whale.addClass(span,classes.arrow);
+                a.appendChild(span);
 				a.addEventListener("click",function(event){
 					event.preventDefault();
 
@@ -174,6 +178,7 @@ var whale = (function(){
 					} else {
 						whale.addClass.collection([a,ul],classes.active);
 					}
+                    
 				});
 			}
 		});
@@ -182,7 +187,8 @@ var whale = (function(){
 	Menu.prototype = {
 		classes:{
 			active:"is-active",
-			parent:"is-parent"
+			parent:"is-parent",
+            arrow:"is-arrow"
 		}
 	};
 

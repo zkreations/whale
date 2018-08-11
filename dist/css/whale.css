@@ -1,5 +1,5 @@
 /*!
- * Whale v1.5.0
+ * Whale v1.5.2
  * Copyright 2017-2018 zkreations
  * Developed by Daniel Abel M. (instagram.com/danie.abel)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
@@ -653,32 +653,32 @@ textarea {
       flex-shrink: 1;
 }
 
-.wrap {
+.flex-wrap {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-.wrap-reverse {
+.flex-wrap-reverse {
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
 }
 
-.column {
+.flex-column {
   -ms-flex-direction: column;
       flex-direction: column;
 }
 
-.column-reverse {
+.flex-column-reverse {
   -ms-flex-direction: column-reverse;
       flex-direction: column-reverse;
 }
 
-.row {
+.flex-row {
   -ms-flex-direction: row;
       flex-direction: row;
 }
 
-.row-reverse {
+.flex-row-reverse {
   -ms-flex-direction: row-reverse;
       flex-direction: row-reverse;
 }
@@ -1113,32 +1113,32 @@ textarea {
         flex-shrink: 1;
   }
 
-  .wrap-sm {
+  .flex-wrap-sm {
      -ms-flex-wrap: wrap;
          flex-wrap: wrap;
   }
 
-  .wrap-reverse-sm {
+  .flex-wrap-reverse-sm {
      -ms-flex-wrap: wrap-reverse;
          flex-wrap: wrap-reverse;
   }
 
-  .column-sm {
+  .flex-column-sm {
     -ms-flex-direction: column;
         flex-direction: column;
   }
 
-  .column-reverse-sm {
+  .flex-column-reverse-sm {
     -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
   }
 
-  .row-sm {
+  .flex-row-sm {
     -ms-flex-direction: row;
         flex-direction: row;
   }
 
-  .row-reverse-sm {
+  .flex-row-reverse-sm {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
   }
@@ -1541,32 +1541,32 @@ textarea {
         flex-shrink: 1;
   }
 
-  .wrap-md {
+  .flex-wrap-md {
      -ms-flex-wrap: wrap;
          flex-wrap: wrap;
   }
 
-  .wrap-reverse-md {
+  .flex-wrap-reverse-md {
      -ms-flex-wrap: wrap-reverse;
          flex-wrap: wrap-reverse;
   }
 
-  .column-md {
+  .flex-column-md {
     -ms-flex-direction: column;
         flex-direction: column;
   }
 
-  .column-reverse-md {
+  .flex-column-reverse-md {
     -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
   }
 
-  .row-md {
+  .flex-row-md {
     -ms-flex-direction: row;
         flex-direction: row;
   }
 
-  .row-reverse-md {
+  .flex-row-reverse-md {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
   }
@@ -1968,32 +1968,32 @@ textarea {
         flex-shrink: 1;
   }
 
-  .wrap-lg {
+  .flex-wrap-lg {
      -ms-flex-wrap: wrap;
          flex-wrap: wrap;
   }
 
-  .wrap-reverse-lg {
+  .flex-wrap-reverse-lg {
      -ms-flex-wrap: wrap-reverse;
          flex-wrap: wrap-reverse;
   }
 
-  .column-lg {
+  .flex-column-lg {
     -ms-flex-direction: column;
         flex-direction: column;
   }
 
-  .column-reverse-lg {
+  .flex-column-reverse-lg {
     -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
   }
 
-  .row-lg {
+  .flex-row-lg {
     -ms-flex-direction: row;
         flex-direction: row;
   }
 
-  .row-reverse-lg {
+  .flex-row-reverse-lg {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
   }
@@ -2396,32 +2396,32 @@ textarea {
         flex-shrink: 1;
   }
 
-  .wrap-xl {
+  .flex-wrap-xl {
      -ms-flex-wrap: wrap;
          flex-wrap: wrap;
   }
 
-  .wrap-reverse-xl {
+  .flex-wrap-reverse-xl {
      -ms-flex-wrap: wrap-reverse;
          flex-wrap: wrap-reverse;
   }
 
-  .column-xl {
+  .flex-column-xl {
     -ms-flex-direction: column;
         flex-direction: column;
   }
 
-  .column-reverse-xl {
+  .flex-column-reverse-xl {
     -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
   }
 
-  .row-xl {
+  .flex-row-xl {
     -ms-flex-direction: row;
         flex-direction: row;
   }
 
-  .row-reverse-xl {
+  .flex-row-reverse-xl {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
   }

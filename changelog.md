@@ -1,5 +1,9 @@
 # changelog
 
+## v1.5.2
+- Solución a conflictos con `.row` y `.flex-row`
+- Actualización de sintaxis para `.column` y `.wrap`
+
 ## v1.5.0
 - Sistema de columnas y filas inspirado en Bootstrap 4.0
 - Mejora en la vista de impresión
@@ -13,7 +17,6 @@
 - Se actualiza la sintaxis para flexbox layout
 - la familia de fuentes ahora corresponde a las fuentes del sistema
 - Depuración del codigo css
-
 
 ## v1.4.0
 - Actualización: normalize.css v8.0.0

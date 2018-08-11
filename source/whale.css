@@ -1,5 +1,5 @@
 /*!
- * Whale v1.5.0
+ * Whale v1.5.2
  * Copyright 2017-2018 zkreations
  * Developed by Daniel Abel M. (instagram.com/danie.abel)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
@@ -635,27 +635,27 @@ textarea {
   flex-shrink: 1;
 }
 
-.wrap {
+.flex-wrap {
   flex-wrap: wrap;
 }
 
-.wrap-reverse {
+.flex-wrap-reverse {
   flex-wrap: wrap-reverse;
 }
 
-.column {
+.flex-column {
   flex-direction: column;
 }
 
-.column-reverse {
+.flex-column-reverse {
   flex-direction: column-reverse;
 }
 
-.row {
+.flex-row {
   flex-direction: row;
 }
 
-.row-reverse {
+.flex-row-reverse {
   flex-direction: row-reverse;
 }
 
@@ -1021,27 +1021,27 @@ textarea {
     flex-shrink: 1;
   }
 
-  .wrap-sm {
+  .flex-wrap-sm {
      flex-wrap: wrap;
   }
 
-  .wrap-reverse-sm {
+  .flex-wrap-reverse-sm {
      flex-wrap: wrap-reverse;
   }
 
-  .column-sm {
+  .flex-column-sm {
     flex-direction: column;
   }
 
-  .column-reverse-sm {
+  .flex-column-reverse-sm {
     flex-direction: column-reverse;
   }
 
-  .row-sm {
+  .flex-row-sm {
     flex-direction: row;
   }
 
-  .row-reverse-sm {
+  .flex-row-reverse-sm {
     flex-direction: row-reverse;
   }
 
@@ -1381,27 +1381,27 @@ textarea {
     flex-shrink: 1;
   }
 
-  .wrap-md {
+  .flex-wrap-md {
      flex-wrap: wrap;
   }
 
-  .wrap-reverse-md {
+  .flex-wrap-reverse-md {
      flex-wrap: wrap-reverse;
   }
 
-  .column-md {
+  .flex-column-md {
     flex-direction: column;
   }
 
-  .column-reverse-md {
+  .flex-column-reverse-md {
     flex-direction: column-reverse;
   }
 
-  .row-md {
+  .flex-row-md {
     flex-direction: row;
   }
 
-  .row-reverse-md {
+  .flex-row-reverse-md {
     flex-direction: row-reverse;
   }
 
@@ -1740,27 +1740,27 @@ textarea {
     flex-shrink: 1;
   }
 
-  .wrap-lg {
+  .flex-wrap-lg {
      flex-wrap: wrap;
   }
 
-  .wrap-reverse-lg {
+  .flex-wrap-reverse-lg {
      flex-wrap: wrap-reverse;
   }
 
-  .column-lg {
+  .flex-column-lg {
     flex-direction: column;
   }
 
-  .column-reverse-lg {
+  .flex-column-reverse-lg {
     flex-direction: column-reverse;
   }
 
-  .row-lg {
+  .flex-row-lg {
     flex-direction: row;
   }
 
-  .row-reverse-lg {
+  .flex-row-reverse-lg {
     flex-direction: row-reverse;
   }
 
@@ -2100,27 +2100,27 @@ textarea {
     flex-shrink: 1;
   }
 
-  .wrap-xl {
+  .flex-wrap-xl {
      flex-wrap: wrap;
   }
 
-  .wrap-reverse-xl {
+  .flex-wrap-reverse-xl {
      flex-wrap: wrap-reverse;
   }
 
-  .column-xl {
+  .flex-column-xl {
     flex-direction: column;
   }
 
-  .column-reverse-xl {
+  .flex-column-reverse-xl {
     flex-direction: column-reverse;
   }
 
-  .row-xl {
+  .flex-row-xl {
     flex-direction: row;
   }
 
-  .row-reverse-xl {
+  .flex-row-reverse-xl {
     flex-direction: row-reverse;
   }
 

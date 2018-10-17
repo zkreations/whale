@@ -1,5 +1,5 @@
 /*!
- * Whale v1.5.2
+ * Whale v1.5.4
  * Copyright 2017-2018 zkreations
  * Developed by José Gregorio (fb.com/JGMateran)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)

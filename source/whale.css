@@ -1,5 +1,5 @@
 /*!
- * Whale v1.5.2
+ * Whale v1.5.4
  * Copyright 2017-2018 zkreations
  * Developed by Daniel Abel M. (instagram.com/danie.abel)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
@@ -2434,6 +2434,7 @@ textarea {
 
   .wjs-menu,
   .wjs-spoiler,
+  .wjs-accordion,
   .wjs-tab {
     display: none !important;
   }

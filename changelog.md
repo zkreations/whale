@@ -1,5 +1,8 @@
 # changelog
 
+## v1.5.4
+- Nuevo componente `.wjs-accordion`
+
 ## v1.5.2
 - Solución a conflictos con `.row` y `.flex-row`
 - Actualización de sintaxis para `.column` y `.wrap`

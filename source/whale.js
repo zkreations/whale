@@ -1,5 +1,5 @@
 /*!
- * Whale v1.5.2
+ * Whale v1.5.4
  * Copyright 2017-2018 zkreations
  * Developed by José Gregorio (fb.com/JGMateran)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
@@ -124,7 +124,6 @@ var whale = (function(){
 	whale.extend({
 		"trim":trim,
 		"forEach":forEach,
-
 		"hasClass":hasClass,
 		"addClass":addClass,
 		"removeClass":removeClass,
@@ -312,11 +311,9 @@ var whale = (function(){
 		var defaults = this.defaults,
 			width = defaults.width,
 			height = defaults.height;
-
 		var string = "left=" + ((screen.width - width) / 2) +
 					 ",top=" + ((screen.height - height) / 2) +
 					 ",width=" + width + ",height=" + height;
-
 
 		container.addEventListener("click",function(event){
 			event.preventDefault();
@@ -331,13 +328,53 @@ var whale = (function(){
 		}
 	};
 
+	function Accordion( container ){
+		this.container = container;
+		this.titles = container.querySelectorAll( '.' + this.const.TITLE );
+		this.collection = container.querySelectorAll( '.' + this.const.CONTENT );
+		this.prev = null;
+		this.init();
+	}
+
+	Accordion.prototype.init = function(){
+		var $self = this;
+		whale.forEach($self.titles,function( index, $title ){
+			var $item = $self.collection[ index ];
+			var parentNode = $title.parentNode;
+			if ( parentNode.classList.contains( $self.const.IS_ACTIVE ) ){
+				$self.prev = parentNode;
+			}
+			$title.addEventListener('click',function( event ){
+				event.preventDefault();
+				console.log( parentNode );
+				if ( $self.prev ){
+					$self.prev.classList.remove( $self.const.IS_ACTIVE );
+				}
+				if ( $self.prev === parentNode ){
+					parentNode.classList.remove( $self.const.IS_ACTIVE );
+								$self.prev = null;
+				} else {
+					parentNode.classList.add( $self.const.IS_ACTIVE );
+					$self.prev = parentNode;
+				}
+			});
+		});
+	};
+
+	Accordion.prototype.const = {
+		TITLE:'accordion-title',
+		CONTENT:'accordion-content',
+		IS_ACTIVE:'is-active'
+	};
+    
 	whale.addElements(components)
 		 .addElements({
 		 	"wjs-menu":Menu,
 		 	"wjs-tab":Tab,
 		 	"wjs-spoiler":Spoiler,
 		 	"wjs-outsite":Outsite,
-		 	"wjs-window":Window
+		 	"wjs-window":Window,
+		 	"wjs-accordion":Accordion
 		 });
 
 })();

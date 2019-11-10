@@ -1,6 +1,6 @@
 /*!
- * Whale v1.5.4
- * Copyright 2017-2018 zkreations
+ * Whale v1.5.5
+ * Copyright 2017-2019 zkreations
  * Developed by José Gregorio (fb.com/JGMateran)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
  */
@@ -130,7 +130,7 @@ var whale = (function(){
 		"toggleClass":toggleClass
 	});
 
-	window.addEventListener("load",function(){
+	window.addEventListener("DOMContentLoaded",function(){
 		var name,
 			components = whale.components;
 

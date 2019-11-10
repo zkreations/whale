@@ -1,9 +1,9 @@
 /*!
- * Whale v1.5.4
- * Copyright 2017-2018 zkreations
+ * Whale v1.6.0
+ * Copyright 2017-2019 zkreations
  * Developed by Daniel Abel M. (instagram.com/danie.abel)
  * Licensed under MIT (github.com/zkreations/whale/blob/master/LICENSE)
- * normalize.css v8.0.0 Licensed under MIT (github.com/necolas/normalize.css)
+ * normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
  */
 
 html {
@@ -13,6 +13,15 @@ html {
 
 body {
   margin: 0;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
 hr {
@@ -48,6 +57,10 @@ samp {
   font-size: 1em;
 }
 
+small {
+  font-size: 80%;
+}
+
 sub,
 sup {
   font-size: 75%;
@@ -68,18 +81,14 @@ img {
   border-style: none;
 }
 
-svg:not(:root) {
-  overflow: hidden;
-}
-
 button,
 input,
 optgroup,
 select,
 textarea {
   font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-size: 100%;
+  line-height: 1.15;
   margin: 0;
 }
 
@@ -176,7 +185,7 @@ template {
 [hidden] {
   display: none;
 }
-
+/*! End normalize.css */
 *,
 *::before,
 *::after {
@@ -185,8 +194,6 @@ template {
 
 html {
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -198,15 +205,10 @@ body {
   text-align: left;
 }
 
-[tabindex="-1"]:focus {
-  outline: 0 !important;
-}
-
 a {
   color: #2196f3;
   text-decoration: none;
   background-color: transparent;
-  -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
@@ -359,19 +361,39 @@ p {
   margin-left: auto;
 }
 
+.position-static {
+  position: static;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.position-sticky {
+  position: sticky;
+}
+
 .fixed-top {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
+  top: 0;
   z-index: 1100;
 }
 
 .fixed-bottom {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 1100;
 }
 
@@ -392,7 +414,6 @@ textarea {
   display: block;
   width: 100%;;
   padding: .5rem .8rem;
-  line-height: 1.5;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #cfd8dc;
@@ -404,12 +425,8 @@ textarea {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   padding: .5rem .8rem;
-  line-height: 1.5;
   cursor: pointer;
 }
 
@@ -464,24 +481,25 @@ textarea {
 
 .dropdown-menu {
   display: flex;
+  flex-direction: column;
 }
 
 .dropdown-menu li {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .dropdown-menu a {
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  flex: 1 0 auto;
 }
 
 .dropdown-menu ul {
-  visibility: hidden;
-  max-height: 0;
+  text-align: left;
+  display: none;
+}
+
+.dropdown-menu ul.is-active {
+  display: block;
 }
 
 .dropdown-menu .is-arrow {
@@ -491,8 +509,6 @@ textarea {
 .dropdown-menu .is-parent > a .is-arrow::after {
   content: "";
   display: inline-block;
-  width: 0;
-  height: 0;
   vertical-align: middle;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
@@ -500,23 +516,12 @@ textarea {
   margin-left: .5rem;
 }
 
-@media (max-width: 991px){
-  .dropdown-menu ul.is-active {
-    visibility: visible;
-    max-height: inherit;
-  }
-
-  .dropdown-menu ul {
-    overflow: hidden;
-  }
-
-  .dropdown-menu {
-    flex-direction: column;
-  }
-}
 @media (min-width: 992px) {
+  .dropdown-menu {
+    flex-direction: row;
+  }
+
   .dropdown-menu ul {
-    text-align: left;
     top: 0;
     left: 100%;
     position: absolute;
@@ -530,15 +535,6 @@ textarea {
   .dropdown-menu > li > ul {
     top: 100%;
     left: 0;
-  }
-  .dropdown-menu li > ul {
-    pointer-events: none;
-  }
-
-  .dropdown-menu li:hover > ul {
-    visibility: visible;
-    max-height: inherit;
-    pointer-events: all;
   }
 
   .dropdown-menu ul .is-parent > a .is-arrow::after {
@@ -572,7 +568,7 @@ textarea {
 }
 
 .display-none {
-  display:none !important;
+  display:none;
 }
 
 .display-inline {
@@ -605,6 +601,14 @@ textarea {
 
 .display-inline-flex {
   display: inline-flex;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
 }
 
 .flex-none {
@@ -958,7 +962,7 @@ textarea {
   }
 
   .display-none-sm {
-    display:none !important;
+    display:none;
   }
 
   .display-inline-sm {
@@ -1318,7 +1322,7 @@ textarea {
   }
 
   .display-none-md {
-    display:none !important;
+    display:none;
   }
 
   .display-inline-md {
@@ -1677,7 +1681,7 @@ textarea {
   }
 
   .display-none-lg {
-    display:none !important;
+    display:none;
   }
 
   .display-inline-lg {
@@ -2037,7 +2041,7 @@ textarea {
   }
 
   .display-none-xl {
-    display:none !important;
+    display:none;
   }
 
   .display-inline-xl {
@@ -2391,57 +2395,57 @@ textarea {
   *,
   *::before,
   *::after {
-    text-shadow: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+    text-shadow: none;
+    box-shadow: none;
+    background: transparent;
   }
 
   .display-none-print {
-    display: none !important;
+    display: none;
   }
 
   .display-inline-print {
-    display: inline !important;
+    display: inline;
   }
 
   .display-inline-block-print {
-    display: inline-block !important;
+    display: inline-block;
   }
 
   .display-block-print {
-    display: block !important;
+    display: block;
   }
 
   .display-table-print {
-    display: table !important;
+    display: table;
   }
 
   .display-table-row-print {
-    display: table-row !important;
+    display: table-row;
   }
 
   .display-table-cell-print {
-    display: table-cell !important;
+    display: table-cell;
   }
 
   .display-flex-print {
-    display: flex !important;
+    display: flex;
   }
 
   .display-inline-flex-print {
-    display: inline-flex !important;
+    display: inline-flex;
   }
 
   .wjs-menu,
   .wjs-spoiler,
   .wjs-accordion,
   .wjs-tab {
-    display: none !important;
+    display: none;
   }
 
   body, article {
-    width: 100% !important;
-    color: #000 !important;
+    width: 100%;
+    color: #000;
     padding: 0;
     margin: 0;
   }
@@ -2449,7 +2453,7 @@ textarea {
   nav,
   aside,
   footer {
-    display: none !important;
+    display: none;
   }
 
   article a {
@@ -2465,7 +2469,7 @@ textarea {
   embed,
   object,
   video {
-    display: none !important;
+    display: none;
   }
 
   abbr[title]::after {
@@ -2473,7 +2477,7 @@ textarea {
   }
 
   pre {
-    white-space: pre-wrap !important;
+    white-space: pre-wrap;
   }
 
   pre,
